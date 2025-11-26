@@ -52,26 +52,53 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	form.addEventListener('submit', (event) => {
-		let formIsValid = true;
-		Object.keys(fields).forEach((fieldName) => {
-			const isValid = validateField(fieldName);
-			if (!isValid) {
-				formIsValid = false;
+form.addEventListener('submit', async (event) => {
+	event.preventDefault();
+
+	let formIsValid = true;
+	Object.keys(fields).forEach((fieldName) => {
+		const isValid = validateField(fieldName);
+		if (!isValid) {
+			formIsValid = false;
+		}
+	});
+
+	if (!formIsValid) {
+		if (statusEl) {
+			statusEl.textContent = 'Please fix the highlighted fields.';
+		}
+		return;
+	}
+
+	if (statusEl) {
+		statusEl.textContent = 'Sending...';
+	}
+
+	try {
+		const formData = new FormData(form);
+		const response = await fetch(form.action, {
+			method: 'POST',
+			body: formData,
+			headers: {
+				Accept: 'application/json'
 			}
 		});
 
-		if (!formIsValid) {
-			event.preventDefault();
+		if (response.ok) {
+			form.reset();
+			Object.keys(fields).forEach((fieldName) => setFieldState(fieldName, true));
 			if (statusEl) {
-				statusEl.textContent = 'Please fix the highlighted fields.';
+				statusEl.textContent = 'Message sent successfully!';
 			}
-			return;
+		} else {
+			throw new Error('Network response was not ok.');
 		}
-
+	} catch (error) {
 		if (statusEl) {
-			statusEl.textContent = 'Sending...';
+			statusEl.textContent = 'Something went wrong. Please try again later.';
 		}
-	});
+		console.error(error);
+	}
+});
 });
 
