@@ -640,6 +640,10 @@ body.scrolled .nav-menu__toggle {
 	color: var(--text-muted);
 }
 
+.contact__field {
+	position: relative;
+}
+
 .contact__form input,
 .contact__form textarea {
 	padding: 0.85rem 1rem;
@@ -654,6 +658,28 @@ body.scrolled .nav-menu__toggle {
 .contact__form input::placeholder,
 .contact__form textarea::placeholder {
 	color: rgba(247, 233, 211, 0.4);
+}
+
+.contact__form input.is-invalid,
+.contact__form textarea.is-invalid {
+	border-color: rgba(255, 99, 71, 0.8);
+	background: rgba(255, 99, 71, 0.08);
+}
+
+.form-error {
+	min-height: 1rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	text-transform: none;
+	color: rgba(255, 142, 102, 0.95);
+}
+
+.form-status {
+	min-height: 1.2rem;
+	font-size: 0.85rem;
+	color: var(--accent-strong);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
 }
 
 .contact__form button {

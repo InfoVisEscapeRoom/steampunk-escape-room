@@ -52,20 +52,31 @@
 					</div>
 					<div class="about__content">
 						<p class="eyebrow">About Quest</p>
-						<h2>A secret workshop hidden in brass and shadow.</h2>
-						<p>Our guest room recreates a secretive space inside a remote Admozur escenrepit cant, where marketralogy escapists experience rare, visceral mysteries.</p>
-						<h3>The Forgotten Inventor’s Lab</h3>
-						<p>Your team unravels the reverberating intent shrouded in valves and glowing vopceriums. Decode the revolving, ornate apparatus to illuminate impossible answers.</p>
+						<h2>A laboratory abandoned during the snail-virus outbreak</h2>
+						<p>This escape room places your team inside a deserted research facility near the epicenter 
+							of a dangerous virus that transforms people into snails. The last scientists working here 
+							were close to a breakthrough—but disappeared before finishing their cure.</p>
+						<h3>The Mission Briefing</h3>
+						<p> As elite specialists arriving by zeppelin, you must enter the lab, search through the 
+							remaining research, and uncover the scientists’ final discoveries. With only one hour 
+							and no support from the outside crew, your task is simple but critical: work through 
+							every station, combine your expertise, and find the cure—before the virus finds you.</p>
 					</div>
 				</section>
 
 				<section class="puzzle-structure" id="structure">
 					<div class="puzzle-structure__content">
 						<p class="eyebrow">Puzzle Structure</p>
-						<h2>Mechanical challenges await at every turn.</h2>
-						<p>Each puzzle is designed to test your team's logic, creativity, and collaboration. From intricate clockwork mechanisms to complex pressure systems, every challenge tells a part of the lab's mysterious story.</p>
-						<h3>Progressive Difficulty</h3>
-						<p>Start with simpler mechanisms to understand the lab's mechanics, then advance to more complex puzzles that require combining multiple solutions to unlock the final mystery.</p>
+						<h2>A multi-stage mission built for teamwork and expertise</h2>
+						<p>The escape room features 5 main puzzle stations, room-based challenges, and a final 
+							combined puzzle. All 5 student groups — doctors, physicists, chemists, malacologists, 
+							and geographics — must complete every station to collect the clues required for the final task.</p>
+						<h3>Collaborative Progression</h3>
+						<p>Each station contains unique data for every team. Groups must analyse and interpret 
+							their own specialized information using their clipboards and keycards to activate puzzles. 
+							Stations can be reset and solved repeatedly without assistance, and no single solution 
+							reveals the answers for another group. Finishing early unlocks extra room puzzles 
+							that provide additional clues before the final challenge.</p>
 					</div>
 					<div class="puzzle-structure__media">
 						<img src="images/structure.png" alt="Puzzle structure and mechanisms">
@@ -191,8 +202,12 @@
 				<section class="making" id="making">
 					<div class="making__text">
 						<p class="eyebrow">Making Of</p>
-						<h2>All mechanisms are handmade using traditional craftsmanship.</h2>
-						<p>Each puzzle is carefully conceptualized and forged to ensure an immersive experience. From the patina of real brass to the scent of machine oil, every detail keeps you suspended in the inventor’s hidden epoch.</p>
+						<h2>Crafted with 3D-printed precision and steampunk design</h2>
+						<p>Every puzzle station in the escape room is built using custom 3D-printed mechanisms,
+							engineered to match the brass-and-steam aesthetic of the abandoned laboratory. 
+							Each element — from interactive components to the atmospheric props — is designed 
+							to support the story of the snail-virus outbreak and the five expert teams sent 
+							to uncover the cure.</p>
 					</div>
 					<div class="making__gallery">
 						<div class="gallery-frame">
@@ -267,24 +282,31 @@
 					<div class="contact__info">
 						<p class="eyebrow">Contact</p>
 						<h2>Share your curiosity.</h2>
-						<p class="contact__email">contact@example.com</p>
+						<p class="contact__email">vorobyova.valentina2005@gmail.com</p>
 						<div class="contact__illustration">
 							<img src="images/pic04.jpg" alt="Mechanical diagram">
 						</div>
 					</div>
-					<form class="contact__form">
-						<label>
+					<form class="contact__form" id="contactForm" action="https://formsubmit.co/vorobyova.valentina2005@gmail.com" method="POST" novalidate>
+						<input type="hidden" name="_subject" value="New message from Steampunk Mystery Room" />
+						<input type="hidden" name="_captcha" value="false" />
+						<input type="hidden" name="_template" value="table" />
+						<label class="contact__field">
 							<span>Name</span>
-							<input type="text" name="name" placeholder="Your name" />
+							<input type="text" name="name" placeholder="Your name" autocomplete="off" />
+							<small class="form-error" data-error-for="name"></small>
 						</label>
-						<label>
+						<label class="contact__field">
 							<span>Email</span>
-							<input type="email" name="email" placeholder="you@example.com" />
+							<input type="email" name="email" placeholder="you@example.com" autocomplete="off" />
+							<small class="form-error" data-error-for="email"></small>
 						</label>
-						<label>
+						<label class="contact__field">
 							<span>Message</span>
 							<textarea name="message" rows="4" placeholder="Tell us about your team"></textarea>
+							<small class="form-error" data-error-for="message"></small>
 						</label>
+						<p class="form-status" aria-live="polite"></p>
 						<button class="btn btn--filled" type="submit">Send</button>
 					</form>
 					<div class="gear-ornaments gear-ornaments--contact" aria-hidden="true">
@@ -299,5 +321,6 @@
 				<p>© 2025 Steampunk Mystery Room</p>
 			</footer>
 		</div>
+		<script defer src="assets/js/contact.js"></script>
 	</body>
 </html>
