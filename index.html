@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body>
+		<!-- Header -->
 		<div class="page-shell">
 			<header class="hero" id="top">
 				<div class="hero__nav">
@@ -29,6 +30,7 @@
 						</details>
 					</div>
 				</div>
+				<!-- Main screen -->
 				<div class="hero__content">
 					<h1>Steampunk Mystery Lab</h1>
 					<p class="hero__lead">Enter the forgotten lab. Solve the impossible.</p>
@@ -45,6 +47,7 @@
 				<div class="hero__glow"></div>
 			</header>
 
+			<!-- About Quest part -->
 			<main>
 				<section class="about" id="story">
 					<div class="about__media">
@@ -64,6 +67,7 @@
 					</div>
 				</section>
 
+				<!-- Puzzle Structure part -->
 				<section class="puzzle-structure" id="structure">
 					<div class="puzzle-structure__content">
 						<p class="eyebrow">Puzzle Structure</p>
@@ -83,6 +87,7 @@
 					</div>
 				</section>
 
+				<!-- Puzzles part -->
 				<section class="puzzles" id="puzzles">
 					<div class="section-heading">
 						<p class="eyebrow">Puzzles</p>
@@ -199,6 +204,7 @@
 
 				<div class="conveyor-belt" aria-hidden="true"></div>
 
+				<!-- Making Of part -->
 				<section class="making" id="making">
 					<div class="making__text">
 						<p class="eyebrow">Making Of</p>
@@ -210,15 +216,28 @@
 							to uncover the cure.</p>
 					</div>
 					<div class="making__gallery">
-						<div class="gallery-frame">
-							<img src="images/pic01.jpg" alt="Clockwork parts on workbench">
-						</div>
-						<div class="gallery-frame">
-							<img src="images/pic03.jpg" alt="Hands assembling gears">
+						<div class="gallery-frame making-slider" data-slider>
+							<img class="making-slider__slide is-active" src="images/room.jpg" alt="Overview of the abandoned laboratory" loading="lazy">
+							<img class="making-slider__slide" src="images/structure.png" alt="Puzzle structure diagram on the table" loading="lazy">
+							<img class="making-slider__slide" src="images/light_sensitive.jpg" alt="Light sensitive puzzle components" loading="lazy">
+							<img class="making-slider__slide" src="images/microscope.png" alt="Microscope puzzle station" loading="lazy">
+							<img class="making-slider__slide" src="images/final.jpg" alt="Final assembly puzzle pieces" loading="lazy">
+
+							<button class="making-slider__control making-slider__control--prev" data-slider-prev type="button" aria-label="Previous photo">‹</button>
+							<button class="making-slider__control making-slider__control--next" data-slider-next type="button" aria-label="Next photo">›</button>
+<!-- 
+							<div class="making-slider__dots" role="tablist" aria-label="Making Of gallery navigation">
+								<button class="making-slider__dot is-active" type="button" data-slide="0" aria-label="Show slide 1"></button>
+								<button class="making-slider__dot" type="button" data-slide="1" aria-label="Show slide 2"></button>
+								<button class="making-slider__dot" type="button" data-slide="2" aria-label="Show slide 3"></button>
+								<button class="making-slider__dot" type="button" data-slide="3" aria-label="Show slide 4"></button>
+								<button class="making-slider__dot" type="button" data-slide="4" aria-label="Show slide 5"></button> -->
+							</div>
 						</div>
 					</div>
 				</section>
 
+				<!-- Our Team part -->
 				<section class="team" id="team">
 					<div class="section-heading">
 						<p class="eyebrow">Our Team</p>
@@ -278,6 +297,7 @@
 
 				<div class="conveyor-belt" aria-hidden="true"></div>
 
+				<!-- Contact part -->
 				<section class="contact" id="contact">
 					<div class="contact__info">
 						<p class="eyebrow">Contact</p>
@@ -318,9 +338,10 @@
 			</main>
 
 			<footer class="page-footer">
-				<p>© 2025 Steampunk Mystery Room</p>
+				<p>© 2025 Steampunk Mystery Lab</p>
 			</footer>
 		</div>
+		<script defer src="assets/js/making-slider.js"></script>
 		<script defer src="assets/js/contact.js"></script>
 	</body>
 </html>
