@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Puzzle Check - Steampunk Mystery Room</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.puzzle-check-page {
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 2rem 1rem;
+				background: radial-gradient(circle at 20% 20%, rgba(255, 188, 121, 0.08), transparent 55%),
+					radial-gradient(circle at 80% 10%, rgba(255, 221, 158, 0.1), transparent 50%),
+					var(--bg-deep);
+			}
+
+			.puzzle-check-container {
+				max-width: 600px;
+				width: 100%;
+				background: rgba(8, 4, 2, 0.65);
+				border: 1px solid var(--border-soft);
+				padding: 3rem 2.5rem;
+				box-shadow: var(--shadow-soft);
+				position: relative;
+			}
+
+			.puzzle-check-container::before {
+				content: '';
+				position: absolute;
+				inset: 1.5rem;
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				pointer-events: none;
+			}
+
+			.puzzle-check-header {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+
+			.puzzle-check-header .eyebrow {
+				margin-bottom: 0.5rem;
+			}
+
+			.puzzle-check-header h2 {
+				margin-bottom: 1rem;
+			}
+
+			.puzzle-check-header p {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+			}
+
+			.puzzle-check-form {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+			}
+
+			.puzzle-check-field {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.puzzle-check-field label {
+				font-size: 0.85rem;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: var(--text-muted);
+				font-weight: 500;
+			}
+
+			.puzzle-check-input-group {
+				display: flex;
+				gap: 1rem;
+				align-items: flex-start;
+			}
+
+			.puzzle-check-input {
+				flex: 1;
+				padding: 0.9rem 1.2rem;
+				border-radius: 6px;
+				border: 1px solid rgba(193, 148, 90, 0.4);
+				background: rgba(12, 6, 3, 0.65);
+				color: var(--text-main);
+				font-family: inherit;
+				font-size: 1rem;
+				transition: border-color 0.3s ease, background 0.3s ease;
+			}
+
+			.puzzle-check-input:focus {
+				outline: none;
+				border-color: var(--accent);
+				background: rgba(12, 6, 3, 0.8);
+			}
+
+			.puzzle-check-input::placeholder {
+				color: rgba(247, 233, 211, 0.4);
+			}
+
+			.puzzle-check-btn {
+				padding: 0.9rem 2rem;
+				border-radius: 6px;
+				border: 1px solid transparent;
+				background: var(--accent);
+				color: #1b0f08;
+				font-weight: 500;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				font-size: 0.85rem;
+				cursor: pointer;
+				transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+			}
+
+			.puzzle-check-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+				background: var(--accent-strong);
+			}
+
+			.puzzle-check-btn:active {
+				transform: translateY(0);
+			}
+
+			.puzzle-check-result {
+				min-height: 1.5rem;
+				padding-top: 0.5rem;
+				font-size: 0.95rem;
+				font-weight: 500;
+				letter-spacing: 0.05em;
+			}
+
+			.puzzle-check-result.success {
+				color: #7cb342;
+			}
+
+			.puzzle-check-result.error {
+				color: #e57373;
+			}
+
+			.puzzle-check-divider {
+				height: 1px;
+				background: var(--border-soft);
+				margin: 1rem 0;
+			}
+
+			.puzzle-check-back {
+				text-align: center;
+				margin-top: 2.5rem;
+				padding-top: 2rem;
+				border-top: 1px solid var(--border-soft);
+			}
+
+			.puzzle-check-back a {
+				color: var(--text-muted);
+				font-size: 0.85rem;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				transition: color 0.3s ease;
+			}
+
+			.puzzle-check-back a:hover {
+				color: var(--accent-strong);
+			}
+
+			@media (max-width: 640px) {
+				.puzzle-check-container {
+					padding: 2rem 1.5rem;
+				}
+
+				.puzzle-check-input-group {
+					flex-direction: column;
+				}
+
+				.puzzle-check-btn {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="puzzle-check-page">
+			<div class="puzzle-check-container">
+				<div class="puzzle-check-header">
+					<p class="eyebrow">Puzzle Verification</p>
+					<h2>Check Your Answers</h2>
+					<p>Enter your solutions to verify correctness</p>
+				</div>
+
+				<div class="puzzle-check-form">
+					<!-- Поле 1 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 1</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="number" 
+								id="a" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkA()">Check</button>
+						</div>
+						<span id="resultA" class="puzzle-check-result"></span>
+					</div>
+
+					<div class="puzzle-check-divider"></div>
+
+					<!-- Поле 2 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 2</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="number" 
+								id="b" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkB()">Check</button>
+						</div>
+						<span id="resultB" class="puzzle-check-result"></span>
+					</div>
+
+					<div class="puzzle-check-divider"></div>
+
+					<!-- Поле 3 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 3</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="number" 
+								id="c" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkC()">Check</button>
+						</div>
+						<span id="resultC" class="puzzle-check-result"></span>
+					</div>
+				</div>
+
+				<!-- <div class="puzzle-check-back">
+					<a href="index.html">← Back to Main Site</a>
+				</div> -->
+			</div>
+		</div>
+
+		<script src="assets/js/script.js"></script>
+	</body>
+</html>

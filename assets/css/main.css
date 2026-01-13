@@ -693,6 +693,124 @@ body.scrolled .nav-menu__toggle {
 	outline-offset: 2px;
 }
 
+.vernissage {
+	background: var(--bg-panel-light);
+	padding: 5rem clamp(1.5rem, 8vw, 8rem);
+}
+
+.vernissage__collage {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 1.5rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	aspect-ratio: 3 / 3;
+}
+
+.vernissage__item {
+	position: relative;
+	overflow: hidden;
+}
+
+.vernissage__item .gallery-frame {
+	height: 100%;
+	padding: 0.75rem;
+}
+
+.vernissage__item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.4s ease;
+}
+
+.vernissage__item:hover img {
+	transform: scale(1.05);
+}
+
+/* Велика вертикальна фотографія зліва (займає 2 ряди) */
+.vernissage__item--tall-left {
+	grid-column: 1;
+	grid-row: 1 / 3;
+}
+
+/* Дві квадратні фотографії справа вгорі */
+.vernissage__item--square-top:nth-of-type(2) {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.vernissage__item--square-top:nth-of-type(3) {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+/* Дві квадратні фотографії справа внизу */
+.vernissage__item--square-bottom:nth-of-type(4) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.vernissage__item--square-bottom:nth-of-type(5) {
+	grid-column: 3;
+	grid-row: 2;
+}
+
+/* Широка горизонтальна фотографія справа внизу (займає 2 колонки) */
+.vernissage__item--wide-bottom {
+	grid-column: 2 / 4;
+	grid-row: 3;
+}
+
+/* Маленька квадратна фотографія зліва внизу */
+.vernissage__item--small-bottom {
+	grid-column: 1;
+	grid-row: 3;
+}
+
+@media (max-width: 1024px) {
+	.vernissage__collage {
+		aspect-ratio: 3 / 3.5;
+	}
+}
+
+@media (max-width: 768px) {
+	.vernissage__collage {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(4, auto);
+		aspect-ratio: auto;
+		gap: 1rem;
+	}
+	
+	.vernissage__item--tall-left {
+		grid-column: 1 / 3;
+		grid-row: 1;
+		min-height: 300px;
+	}
+	
+	.vernissage__item--square-top:nth-of-type(2),
+	.vernissage__item--square-top:nth-of-type(3),
+	.vernissage__item--square-bottom:nth-of-type(4),
+	.vernissage__item--square-bottom:nth-of-type(5) {
+		grid-column: span 1;
+		grid-row: auto;
+		min-height: 200px;
+	}
+	
+	.vernissage__item--wide-bottom {
+		grid-column: 1 / 3;
+		grid-row: auto;
+		min-height: 200px;
+	}
+	
+	.vernissage__item--small-bottom {
+		grid-column: span 1;
+		grid-row: auto;
+		min-height: 200px;
+	}
+}
+
 .contact {
 	background: var(--bg-panel-light);
 	display: grid;
