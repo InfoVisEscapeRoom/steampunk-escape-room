@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Puzzle Check - Steampunk Mystery Room</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/puzzle_check.css"/>
+	</head>
+	<body>
+		<div class="puzzle-check-page">
+			<div class="puzzle-check-container">
+				<div class="puzzle-check-header">
+					<p class="eyebrow">Puzzle Verification</p>
+					<h2>Team 2</h2>
+					<h2>Check Your Answers</h2>
+					<p>Enter your solutions to verify correctness</p>
+				</div>
+
+				<div class="puzzle-check-form">
+					<!-- Поле 1 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 1 - Shadow Puppets</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="number" 
+								id="a" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkA()">Check</button>
+						</div>
+						<span id="resultA" class="puzzle-check-result"></span>
+					</div>
+
+					<div class="puzzle-check-divider"></div>
+
+					<!-- Поле 2 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 2 - Microscope</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="text" 
+								id="b" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkB()">Check</button>
+						</div>
+						<span id="resultB" class="puzzle-check-result"></span>
+					</div>
+
+					<div class="puzzle-check-divider"></div>
+
+					<!-- Поле 3 -->
+					<div class="puzzle-check-field">
+						<label>Puzzle 3 - The Body</label>
+						<div class="puzzle-check-input-group">
+							<input 
+								type="number" 
+								id="c" 
+								class="puzzle-check-input" 
+								placeholder="Enter your answer"
+								autocomplete="off"
+							>
+							<button class="puzzle-check-btn" onclick="checkC()">Check</button>
+						</div>
+						<span id="resultC" class="puzzle-check-result"></span>
+					</div>
+				</div>
+
+				<!-- <div class="puzzle-check-back">
+					<a href="index.html">← Back to Main Site</a>
+				</div> -->
+			</div>
+		</div>
+
+		<script src="assets/js/script_team2.js"></script>
+	</body>
+</html>
