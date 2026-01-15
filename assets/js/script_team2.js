@@ -6,7 +6,7 @@ function checkA() {
 
   result.className = "puzzle-check-result";
   
-  if (value === 209) {
+  if (value === 8810) {
     result.textContent = "✅ Correct, your number is 5";
     result.className += " success";
   } else if (input.value === "") {
