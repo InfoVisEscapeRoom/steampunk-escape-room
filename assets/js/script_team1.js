@@ -7,12 +7,12 @@ function checkA() {
   result.className = "puzzle-check-result";
   
   if (value === 9125) {
-    result.textContent = "✅ Correct, your number is 6";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 6";
     result.className += " success";
   } else if (input.value === "") {
     result.textContent = "";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }
@@ -33,10 +33,10 @@ function checkB() {
   }
 
   if (value === "malakologe") {
-    result.textContent = "✅ Correct! Your number is 9";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 9";
     result.className += " success";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }
@@ -51,12 +51,12 @@ function checkC() {
   result.className = "puzzle-check-result";
   
   if (value === 300) {
-    result.textContent = "✅ Correct, your number is 7";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 7";
     result.className += " success";
   } else if (input.value === "") {
     result.textContent = "";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }

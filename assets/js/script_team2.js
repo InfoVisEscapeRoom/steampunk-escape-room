@@ -7,12 +7,12 @@ function checkA() {
   result.className = "puzzle-check-result";
   
   if (value === 8810) {
-    result.textContent = "✅ Correct, your number is 5";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 5";
     result.className += " success";
   } else if (input.value === "") {
     result.textContent = "";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }
@@ -33,10 +33,10 @@ function checkB() {
   }
 
   if (value === "jack") {
-    result.textContent = "✅ Correct! Your number is 1";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 1";
     result.className += " success";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }
@@ -51,12 +51,12 @@ function checkC() {
   result.className = "puzzle-check-result";
   
   if (value === 300) {
-    result.textContent = "✅ Correct, your number is 8";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 8";
     result.className += " success";
   } else if (input.value === "") {
     result.textContent = "";
   } else {
-    result.textContent = "❌ Incorrect, please try again";
+    result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
   }
 }
