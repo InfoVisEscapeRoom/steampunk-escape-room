@@ -172,3 +172,8 @@
 					width: 100%;
 				}
 			}
+			@media (max-width: 640px) {
+				.puzzle-check-container::before {
+					display: none;
+				}
+			}
