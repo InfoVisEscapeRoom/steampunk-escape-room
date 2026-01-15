@@ -46,15 +46,15 @@ function checkB() {
 function checkC() {
   const input = document.getElementById("c");
   const result = document.getElementById("resultC");
-  const value = Number(input.value);
+  const value = input.value.trim();
 
   result.className = "puzzle-check-result";
-  
-  if (value === 300) {
-    result.textContent = "✅ Richtig, Ihr Schlüssel ist 6";
-    result.className += " success";
-  } else if (input.value === "") {
+
+  if (value === "") {
     result.textContent = "";
+  } else if (value.toUpperCase() === "LLGN") {
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 2";
+    result.className += " success";
   } else {
     result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";
     result.className += " error";
