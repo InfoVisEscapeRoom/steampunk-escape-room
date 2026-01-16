@@ -33,7 +33,7 @@ function checkB() {
   }
 
   if (value === "malakologe") {
-    result.textContent = "✅ Richtig, Ihr Schlüssel ist 9";
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 7";
     result.className += " success";
   } else {
     result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";

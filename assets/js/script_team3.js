@@ -32,8 +32,8 @@ function checkB() {
     return;
   }
 
-  if (value === "mike") {
-    result.textContent = "✅ Richtig, Ihr Schlüssel ist 0";
+  if (value === "leber") {
+    result.textContent = "✅ Richtig, Ihr Schlüssel ist 3";
     result.className += " success";
   } else {
     result.textContent = "❌ Falsch, bitte versuchen Sie es erneut";

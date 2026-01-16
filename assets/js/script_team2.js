@@ -32,7 +32,7 @@ function checkB() {
     return;
   }
 
-  if (value === "jack") {
+  if (value === "tizian") {
     result.textContent = "✅ Richtig, Ihr Schlüssel ist 1";
     result.className += " success";
   } else {
