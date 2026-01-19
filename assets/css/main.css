@@ -1174,3 +1174,63 @@ body.scrolled .nav-menu__toggle {
 	} */
 }
 
+
+
+
+/* =========================
+   FOOTER RESPONSIVE
+========================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .page-footer {
+    padding: 2rem 1.5rem 1rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .8rem;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 500px) {
+  .page-footer {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .footer-btn {
+    width: 100%;
+    text-align: center;
+    font-size: .85rem;
+  }
+
+  .footer-buttons {
+    width: 100%;
+  }
+
+  .footer-title {
+    font-size: .9rem;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    font-size: .7rem;
+  }
+}
