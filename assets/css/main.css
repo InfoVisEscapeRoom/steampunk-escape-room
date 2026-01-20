@@ -187,7 +187,7 @@ body.scrolled .nav-menu__toggle {
 
 .hero__content {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	max-width: 640px;
 	margin-top: 6rem;
 }
@@ -1115,13 +1115,56 @@ body.scrolled .nav-menu__toggle {
 		padding-top: 3rem;
 	}
 
-	.nav-menu {
+	/* .nav-menu {
 		top: 1rem;
 		left: 50%;
 		right: auto;
 		transform: translateX(-50%);
 		width: calc(100% - 2rem);
 	}
+
+	.nav-menu__list {
+		position: static;
+		margin-top: 0.75rem;
+		width: 100%;
+	} */
+
+	@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed; /* Гарантуємо, що воно поверх всього при скролі */
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+    }
+
+    .nav-menu__toggle {
+        background: #1a0f0a !important;
+        border: 1px solid #c18e5e;
+        text-align: center;
+        display: block;
+        width: 100%;
+        color: #fff;
+    }
+
+    .nav-menu__list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0f0a08 !important; /* Максимально темний і густий фон */
+        border: 1px solid #c18e5e;
+        margin-top: 8px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,1);
+    }
+    
+    /* Щоб посилання не зливалися */
+    .nav-menu__list li {
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(193, 142, 94, 0.1);
+    }
+}
 
 	section {
 		padding: 4rem 1.5rem;
@@ -1143,11 +1186,7 @@ body.scrolled .nav-menu__toggle {
 		grid-template-columns: 1fr;
 	}
 
-	.nav-menu__list {
-		position: static;
-		margin-top: 0.75rem;
-		width: 100%;
-	}
+	
 }
 
 @media (max-width: 1024px) and (min-width: 641px) {
