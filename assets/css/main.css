@@ -224,6 +224,10 @@ body.scrolled .nav-menu__toggle {
 	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 
+.change-width{
+	width: 60%;
+}
+
 .btn--ghost {
 	border-color: var(--border-soft);
 	color: var(--text-main);
