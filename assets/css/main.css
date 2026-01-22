@@ -346,6 +346,16 @@ body.scrolled .nav-menu__toggle {
 	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* .puzzle-grid--additional {
+	display: grid;
+	grid-template-columns: 45% 45%;
+	justify-content: start; 
+	gap: 2.5rem;
+	max-width: 100%;
+	margin: 0 auto; 
+	padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
 .puzzle-card {
 	background: rgba(8, 4, 2, 0.65);
 	border: 1px solid var(--border-soft);
@@ -354,7 +364,33 @@ body.scrolled .nav-menu__toggle {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+} */
+
+
+.puzzle-grid--additional {
+	display: grid;
+	grid-template-columns: 45% 45%;
+	justify-content: start; /* вирівнювання по лівому краю */
+	gap: 2.5rem;
+	max-width: 100%;
+	margin: 0 auto; 
+	padding: 0; /* прибираємо паддінг контейнера */
+	align-items: start; /* вирівнювання всіх елементів по верхньому краю */
 }
+
+.puzzle-card {
+	background: rgba(8, 4, 2, 0.65);
+	border: 1px solid var(--border-soft);
+	padding: 5%; /* прибираємо внутрішні відступи */
+	box-shadow: var(--shadow-soft);
+	display: flex;
+	flex-direction: column;
+	gap: 0; /* прибираємо відстань між елементами */
+}
+
+
+
+
 
 .puzzle-card--highlight {
 	border-color: rgba(243, 197, 138, 0.65);
@@ -373,6 +409,13 @@ body.scrolled .nav-menu__toggle {
 	box-shadow: var(--shadow-soft);
 }
 
+.puzzle-panel--final {
+	border: none;
+	background: transparent;
+	box-shadow: none;
+	padding: 0;
+}
+
 .puzzle-panel__heading {
 	margin-bottom: 1.5rem;
 }
@@ -381,6 +424,10 @@ body.scrolled .nav-menu__toggle {
 	border: 1px solid var(--border-soft);
 	padding: 0.4rem;
 	background: rgba(255, 255, 255, 0.03);
+}
+
+.additional{
+	height: 400px;
 }
 .puzzle-card__media-final{
 	min-height: 600px;
@@ -1249,8 +1296,79 @@ body.scrolled .nav-menu__toggle {
 		padding: 4rem 1.5rem;
 	}
 
+	/* About Quest - картинка зверху, текст знизу, на весь екран */
+	.about {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.about__media {
+		order: 1;
+		width: 100%;
+		margin: 0;
+		padding: 0.75rem;
+	}
+
+	.about__content {
+		order: 2;
+		width: 100%;
+		max-width: 100%;
+		padding: 0 1.5rem;
+	}
+
+	/* Puzzle Structure - картинка зверху, текст знизу, на весь екран */
+	.puzzle-structure {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.puzzle-structure__content {
+		order: 2;
+		width: 100%;
+		max-width: 100%;
+		padding: 0 1.5rem;
+	}
+
+	.puzzle-structure__media {
+		order: 1;
+		width: 100%;
+		margin: 0;
+		padding: 0.75rem;
+	}
+
+	/* Contact - картинка зверху, форма знизу, на весь екран */
+	.contact {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.contact__info {
+		order: 1;
+		width: 100%;
+		padding: 0 1.5rem;
+	}
+
+	.contact__illustration {
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto 2rem;
+	}
+
 	.contact__form {
+		order: 2;
+		width: calc(100% - 3rem);
 		padding: 2rem 1.5rem;
+		margin: 0 1.5rem;
+	}
+
+	.contact__form button {
+		width: 100%;
 	}
 
 	.gear-ornaments {
@@ -1264,6 +1382,82 @@ body.scrolled .nav-menu__toggle {
 	.puzzle-grid--three {
 		grid-template-columns: 1fr;
 	}
+
+	.puzzle-grid--double {
+		grid-template-columns: 1fr;
+	}
+
+	.puzzle-grid--additional {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding: 0 1.5rem;
+	}
+
+	/* Puzzles секція - покращена адаптація */
+	.puzzles {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.puzzle-group {
+		padding: 0 1.5rem;
+	}
+
+	.puzzle-panel {
+		padding: 1.5rem;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+	}
+
+	.puzzle-card__media {
+		height: 250px;
+	}
+
+	.puzzle-card__media-final {
+		min-height: 500px;
+	}
+
+	/* Final Puzzle - картинка більша, текст внизу */
+	.puzzle-panel--final {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0 1.5rem;
+	}
+
+	.puzzle-panel--final .puzzle-panel__heading {
+		padding: 0;
+		margin-bottom: 1.5rem;
+	}
+
+	.puzzle-card--final {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+	}
+
+	.puzzle-card--final .puzzle-card__media-final {
+		order: 1;
+		width: 100%;
+		min-height: 500px;
+		margin-bottom: 1.5rem;
+	}
+
+	.puzzle-card--final .puzzle-note {
+		order: 2;
+		margin-bottom: 1rem;
+	}
+
+	.puzzle-card--final .rating {
+		order: 3;
+	}
+
+	.additional {
+		height: 300px;
+	}
+
 	.making {
 		grid-template-columns: 1fr;
 	}
@@ -1275,8 +1469,120 @@ body.scrolled .nav-menu__toggle {
 	.making__gallery {
 		order: 2;
 	}
+}
 
-	
+/* Покращена адаптація для екранів від 769px до 950px */
+@media (min-width: 769px) and (max-width: 950px) {
+	.about {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+
+	.about__media {
+		order: 1;
+	}
+
+	.about__content {
+		order: 2;
+		max-width: 100%;
+	}
+
+	.puzzle-structure {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+
+	.puzzle-structure__content {
+		order: 1;
+		max-width: 100%;
+	}
+
+	.puzzle-structure__media {
+		order: 2;
+	}
+
+	.contact {
+		grid-template-columns: 1fr;
+		gap: 3rem;
+	}
+
+	.contact__info {
+		order: 1;
+	}
+
+	.contact__form {
+		order: 2;
+	}
+
+	.puzzle-grid--three {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.puzzle-grid--double {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.puzzle-grid--additional {
+		grid-template-columns: 45% 45%;
+		gap: 2.5rem;
+	}
+
+	/* Puzzles секція - покращена адаптація */
+	.puzzle-card__media {
+		height: 280px;
+	}
+
+	.puzzle-card__media-final {
+		min-height: 500px;
+	}
+
+	.additional {
+		height: 350px;
+	}
+}
+
+/* Покращена адаптація для екранів більше 950px */
+@media (min-width: 951px) {
+	.about {
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2.5rem, 5vw, 4rem);
+	}
+
+	.about__media {
+		order: 1;
+	}
+
+	.about__content {
+		order: 2;
+		max-width: 540px;
+	}
+
+	.puzzle-structure {
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2.5rem, 5vw, 4rem);
+	}
+
+	.puzzle-structure__content {
+		order: 1;
+		max-width: 540px;
+	}
+
+	.puzzle-structure__media {
+		order: 2;
+	}
+
+	.contact {
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2.5rem, 5vw, 5rem);
+	}
+
+	.contact__info {
+		order: 1;
+	}
+
+	.contact__form {
+		order: 2;
+	}
 }
 
 @media (max-width: 1024px) and (min-width: 641px) {
