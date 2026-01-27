@@ -1,0 +1,261 @@
+#include <Arduino.h>
+
+// -------------------- Pinbelegung --------------------
+// 5 Buttons
+#define BTN1_PIN 2
+#define BTN2_PIN 3
+#define BTN3_PIN 4
+#define BTN4_PIN 7
+#define BTN5_PIN 8
+
+// RGB-LEDs (COMMON ANODE: Anode -> +5V; RGB -> GRD)
+// Rot (alle vier gemeinsam, PWM-Pin)
+#define LED_R_PIN   5
+
+// Grün (alle vier gemeinsam)
+#define LED_G_PIN   12
+
+// Blau-Kathoden, jede LED einzeln
+#define LED_B1_PIN  6
+#define LED_B2_PIN  9
+#define LED_B3_PIN 10
+#define LED_B4_PIN 11
+
+// -------------------- Rätsel-Einstellungen --------------------
+
+
+// Buttons als 1..5
+// 1= Brain
+// 2= Heart
+// 3= Kidney
+// 4= Lung
+// 5= Liver 
+//GRP 1
+//const byte solution[] = {4, 2, 5, 3};
+//GRP 2
+//const byte solution[] = {1, 2, 3, 4};
+//GRP 3
+const byte solution[] = {5, 4, 1, 3};
+
+
+//------------------------------------------------------------------
+
+const byte solutionLength = sizeof(solution) / sizeof(solution[0]);
+
+byte inputIndex = 0;                 // wie viele Eingaben gemacht wurden (0..4)
+byte userInput[solutionLength] = {}; // gemerkte Eingaben
+bool busy   = false;                 // true während Fehler-Animation
+bool solved = false;                 // true wenn Rätsel gelöst (grün an)
+
+// ---------- FUNKTIONS-PROTOTYPEN ----------
+byte readButton();
+void waitForAllButtonsReleased();
+void showBlueProgress(byte count);
+void setAllBlueOff();
+void setAllLedsOff();
+void resetPuzzle();
+void successSequence();
+void failureSequence();
+bool isSequenceCorrect();
+
+// -------------------- Setup --------------------
+void setup() {
+  Serial.begin(9600);
+  Serial.println(F("Puzzle startet..."));
+
+  pinMode(BTN1_PIN, INPUT_PULLUP);
+  pinMode(BTN2_PIN, INPUT_PULLUP);
+  pinMode(BTN3_PIN, INPUT_PULLUP);
+  pinMode(BTN4_PIN, INPUT_PULLUP);
+  pinMode(BTN5_PIN, INPUT_PULLUP);
+
+  pinMode(LED_R_PIN,  OUTPUT);
+  pinMode(LED_G_PIN,  OUTPUT);
+  pinMode(LED_B1_PIN, OUTPUT);
+  pinMode(LED_B2_PIN, OUTPUT);
+  pinMode(LED_B3_PIN, OUTPUT);
+  pinMode(LED_B4_PIN, OUTPUT);
+
+  resetPuzzle();
+}
+
+// -------------------- Loop --------------------
+void loop() {
+  if (busy) return;
+
+  byte pressed = readButton();  // 0 = keiner, 1..5 = welcher Button
+
+  if (pressed != 0) {
+    Serial.print(F("Button gedrueckt: "));
+    Serial.print(pressed);
+    Serial.print(F("  (Eingabe "));
+    Serial.print(inputIndex + 1);
+    Serial.print(F("/"));
+    Serial.print(solutionLength);
+    Serial.println(F(")"));
+
+    // warten, bis Knöpfe losgelassen sind
+    waitForAllButtonsReleased();
+    delay(50);
+
+    // wenn richtig gelöst: nächster Druck startet neues Rätsel
+    if (solved) {
+      Serial.println(F("Neuer Versuch nach geloestem Raetsel -> Reset"));
+      resetPuzzle();
+      return;
+    }
+
+    if (inputIndex < solutionLength) {
+      // Eingabe merken
+      userInput[inputIndex] = pressed;
+      inputIndex++;
+
+      // Blau-Fortschritt anzeigen (1..4)
+      showBlueProgress(inputIndex);
+
+      Serial.print(F("Aktuelle Eingaben: "));
+      for (byte i = 0; i < inputIndex; i++) {
+        Serial.print(userInput[i]);
+        if (i < inputIndex - 1) Serial.print(F(", "));
+      }
+      Serial.println();
+
+      // sind jetzt 4 Eingaben voll? -> auswerten
+      if (inputIndex >= solutionLength) {
+        Serial.println(F("Vier Eingaben erreicht, pruefe Sequenz..."));
+
+        if (isSequenceCorrect()) {
+          Serial.println(F("Sequenz KORREKT -> successSequence()"));
+          successSequence();
+        } else {
+          Serial.println(F("Sequenz FALSCH -> failureSequence()"));
+          failureSequence();
+        }
+      }
+    } else {
+      // Sollte eigentlich nie vorkommen
+      Serial.println(F("Mehr als 4 Eingaben erkannt, aber noch kein Reset."));
+    }
+  }
+}
+
+// -------------------- Hilfsfunktionen --------------------
+
+// Gibt 0 wenn keiner gedrückt, sonst 1..5
+byte readButton() {
+  if (digitalRead(BTN1_PIN) == LOW) return 1;
+  if (digitalRead(BTN2_PIN) == LOW) return 2;
+  if (digitalRead(BTN3_PIN) == LOW) return 3;
+  if (digitalRead(BTN4_PIN) == LOW) return 4;
+  if (digitalRead(BTN5_PIN) == LOW) return 5;
+  return 0;
+}
+
+void waitForAllButtonsReleased() {
+  bool anyPressed = true;
+  while (anyPressed) {
+    anyPressed = (digitalRead(BTN1_PIN) == LOW) ||
+                 (digitalRead(BTN2_PIN) == LOW) ||
+                 (digitalRead(BTN3_PIN) == LOW) ||
+                 (digitalRead(BTN4_PIN) == LOW) ||
+                 (digitalRead(BTN5_PIN) == LOW);
+    delay(10);
+  }
+}
+
+// count = 1..4 -> wie viele blaue LEDs leuchten
+void showBlueProgress(byte count) {
+  // Common-Anode: LOW = an, HIGH = aus
+  digitalWrite(LED_B1_PIN, (count >= 1) ? LOW : HIGH);
+  digitalWrite(LED_B2_PIN, (count >= 2) ? LOW : HIGH);
+  digitalWrite(LED_B3_PIN, (count >= 3) ? LOW : HIGH);
+  digitalWrite(LED_B4_PIN, (count >= 4) ? LOW : HIGH);
+}
+
+void setAllBlueOff() {
+  digitalWrite(LED_B1_PIN, HIGH);
+  digitalWrite(LED_B2_PIN, HIGH);
+  digitalWrite(LED_B3_PIN, HIGH);
+  digitalWrite(LED_B4_PIN, HIGH);
+}
+
+void setAllLedsOff() {
+  // Rot (PWM, Common-Anode -> 255 = aus)
+  analogWrite(LED_R_PIN, 255);
+  // Grün aus
+  digitalWrite(LED_G_PIN, HIGH);
+  // Blau aus
+  setAllBlueOff();
+}
+
+void resetPuzzle() {
+  inputIndex = 0;
+  busy   = false;
+  solved = false;
+  for (byte i = 0; i < solutionLength; i++) {
+    userInput[i] = 0;
+  }
+  setAllLedsOff();
+  Serial.println(F("Puzzle reset"));
+}
+
+bool isSequenceCorrect() {
+  for (byte i = 0; i < solutionLength; i++) {
+    if (userInput[i] != solution[i]) {
+      Serial.print(F("Vergleich: Stelle "));
+      Serial.print(i);
+      Serial.print(F(" erwartet "));
+      Serial.print(solution[i]);
+      Serial.print(F(", bekommen "));
+      Serial.println(userInput[i]);
+      return false;
+    }
+  }
+  return true;
+}
+
+// -------------------- Erfolg / Fehler --------------------
+
+void successSequence() {
+  //  Tastendruck erkennen
+  busy   = false;
+  solved = true;
+
+  // Blau & Rot aus, Grün dauerhaft an
+  setAllBlueOff();
+  analogWrite(LED_R_PIN, 255);   // aus
+  digitalWrite(LED_G_PIN, LOW);  // an (Common-Anode)
+
+  Serial.println(F("SUCCESS."));
+}
+
+void failureSequence() {
+  busy   = true;
+  solved = false;
+
+  Serial.println(F("FAILURE"));
+
+  // Andere Farben aus
+  setAllBlueOff();
+  digitalWrite(LED_G_PIN, HIGH); // Grün aus
+
+  //Pulsweitenmod. für rotes blinken
+  unsigned long start = millis();
+  while (millis() - start < 10000UL) {
+    // heller
+    for (int v = 0; v <= 255; v += 5) {
+      // Common-Anode: 0 = voll an, 255 = aus
+      analogWrite(LED_R_PIN, 255 - v);
+      delay(5);
+    }
+    // dunkler
+    for (int v = 255; v >= 0; v -= 5) {
+      analogWrite(LED_R_PIN, 255 - v);
+      delay(5);
+    }
+  }
+
+  analogWrite(LED_R_PIN, 255); // rot aus
+  Serial.println(F("Rot Puls fertig -> ResetPuzzle"));
+  resetPuzzle();
+}
