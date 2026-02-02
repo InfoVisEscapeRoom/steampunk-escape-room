@@ -1,5 +1,7 @@
 #Steampunk Mystery Lab - Escape room - Website
+
 ##General information 
+
 Project name: Steampunk Escape Room 
 Location: GitHub repository — InfoVisEscapeRoom/steampunk-escape-room 
 Type: Static website 
@@ -76,5 +78,6 @@ https://infovisescaperoom.github.io/steampunk-escape-room/
 Use the menu to navigate between sections of the page. At the bottom of the site, you will 
 find all the necessary files for developing puzzles, as well as links to other pages related to 
 the game. 
+
 
 
