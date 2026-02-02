@@ -1,16 +1,16 @@
-Steampunk Mystery Lab - Escape room - Website
-General information 
+#Steampunk Mystery Lab - Escape room - Website
+##General information 
 Project name: Steampunk Escape Room 
 Location: GitHub repository — InfoVisEscapeRoom/steampunk-escape-room 
 Type: Static website 
 Languages: HTML, CSS, JavaScript. 
-39 
-Purpose of the website 
+##Purpose of the website 
 The website is designed to showcase a steampunk-style escape room project and provide 
 all the necessary information about it. It presents the concept of the quest, its atmosphere, 
 structure, tasks, and answer verification logic, as well as familiarizes the user with the idea, 
-scenario, and possibilities of the escape room. 
-Technologies used 
+scenario, and possibilities of the escape room.
+
+##Technologies used 
 The project was implemented using: 
 HTML – page structure 
 CSS – styles, design 
@@ -18,7 +18,7 @@ JavaScript – interaction logic
 Assets – graphics and multimedia 
 GitHub Pages – for online deployment 
 
-Site structure 
+##Site structure 
 Folders 
 1. assets/ – project resources: 
 CSS files for page styling 
@@ -41,10 +41,10 @@ team (exclusively for use during the game in the quest room)
 Other files 
 1. README.txt – text description of the project. 
 2. documentation.docx – detailed documentation of the project. 
-Functionality 
+
+##Functionality 
 The Steampunk Escape Room project is implemented as a static website, but it has several 
 important functional features: 
-40 
 Static website without a server component 
 All content is stored in HTML, CSS, and JavaScript files. 
 No database or server is required for the site to work — it can be run locally or via GitHub 
@@ -64,8 +64,9 @@ Special fonts, buttons, and decorative elements in the steampunk style are used.
 Images and backgrounds emphasize the atmosphere of the quest room and make the site 
 visually appealing. 
 Adaptability 
-The site displays correctly on desktops, tablets, and mobile devices. 
-User guide 
+The site displays correctly on desktops, tablets, and mobile devices.
+
+##User guide 
 Clone the repository: 
 git clone https://github.com/InfoVisEscapeRoom/steampunk-escape-room.git 
 Open index.html in your browser. 
@@ -75,4 +76,5 @@ https://infovisescaperoom.github.io/steampunk-escape-room/
 Use the menu to navigate between sections of the page. At the bottom of the site, you will 
 find all the necessary files for developing puzzles, as well as links to other pages related to 
 the game. 
+
 
