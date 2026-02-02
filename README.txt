@@ -17,9 +17,8 @@ CSS – styles, design
 JavaScript – interaction logic 
 Assets – graphics and multimedia 
 GitHub Pages – for online deployment 
+
 Site structure 
-�
-�
 Folders 
 1. assets/ – project resources: 
 CSS files for page styling 
@@ -27,8 +26,6 @@ JavaScript files for site logic
 Other auxiliary files (fonts, icons, styles) 
 2. images/ – graphic files: 
 Images for backgrounds, buttons, quest room illustrations 
-�
-�
 HTML files 
 1. index.html – main page of the site: 
 Welcome page of the project 
@@ -41,8 +38,6 @@ Demonstrations of the quest room and information about it
 team (exclusively for use during the game in the quest room) 
 6. puzzle-check_team3.html – checking the correctness of solved puzzles for the third team 
 (exclusively for use during the game in the quest room) 
-�
-�
 Other files 
 1. README.txt – text description of the project. 
 2. documentation.docx – detailed documentation of the project. 
@@ -80,3 +75,4 @@ https://infovisescaperoom.github.io/steampunk-escape-room/
 Use the menu to navigate between sections of the page. At the bottom of the site, you will 
 find all the necessary files for developing puzzles, as well as links to other pages related to 
 the game. 
+
