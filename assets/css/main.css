@@ -1219,7 +1219,7 @@ body.scrolled .nav-menu__toggle {
 }
 
 .footer-bottom {
-  margin-top: auto;
+  margin-top: 5%;
   text-align: center;
   font-size: .8rem;
   color: #c7a26a;
@@ -1257,7 +1257,7 @@ body.scrolled .nav-menu__toggle {
 
 	@media (max-width: 768px) {
     .nav-menu {
-        position: fixed; /* Гарантуємо, що воно поверх всього при скролі */
+        position: fixed; 
         top: 1rem;
         left: 50%;
         transform: translateX(-50%);
@@ -1278,14 +1278,14 @@ body.scrolled .nav-menu__toggle {
         top: 100%;
         left: 0;
         width: 100%;
-        background: #0f0a08 !important; /* Максимально темний і густий фон */
+        background: #0f0a08 !important; 
         border: 1px solid #c18e5e;
         margin-top: 8px;
         padding: 20px;
         box-shadow: 0 20px 50px rgba(0,0,0,1);
     }
     
-    /* Щоб посилання не зливалися */
+   
     .nav-menu__list li {
         margin-bottom: 10px;
         border-bottom: 1px solid rgba(193, 142, 94, 0.1);
@@ -1296,7 +1296,7 @@ body.scrolled .nav-menu__toggle {
 		padding: 4rem 1.5rem;
 	}
 
-	/* About Quest - картинка зверху, текст знизу, на весь екран */
+	
 	.about {
 		grid-template-columns: 1fr;
 		gap: 2rem;
@@ -1318,7 +1318,7 @@ body.scrolled .nav-menu__toggle {
 		padding: 0 1.5rem;
 	}
 
-	/* Puzzle Structure - картинка зверху, текст знизу, на весь екран */
+	
 	.puzzle-structure {
 		grid-template-columns: 1fr;
 		gap: 2rem;
@@ -1340,7 +1340,7 @@ body.scrolled .nav-menu__toggle {
 		padding: 0.75rem;
 	}
 
-	/* Contact - картинка зверху, форма знизу, на весь екран */
+	
 	.contact {
 		grid-template-columns: 1fr;
 		gap: 2rem;
@@ -1669,4 +1669,53 @@ body.scrolled .nav-menu__toggle {
   .footer-bottom {
     font-size: .7rem;
   }
+}
+
+
+.advisors-section {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #1a120b;
+	padding-bottom: 5%;
+}
+
+
+.steampunk-border {
+    position: relative; 
+    padding: 40px 60px;
+    border: 1px solid #ffd58a;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    max-width: 500px;
+    text-align: center;
+}
+
+
+.top-left     { top: 10px; left: 10px; }
+.top-right    { top: 10px; right: 10px; }
+.bottom-left  { bottom: 10px; left: 10px; }
+.bottom-right { bottom: 10px; right: 10px; }
+
+.advisors-title {
+    font-family: 'Playfair Display', serif;
+    color:  #ffd58a;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    border-bottom: 2px double  #ffd58a;
+    display: inline-block;
+}
+
+.advisors-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.advisors-list li {
+    font-family: 'Courier New', monospace;
+    color: #ffd58a;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
